@@ -1,0 +1,16 @@
+- hosts: localhost
+  tasks:
+  - name: install git or ensure git is installed and enable it
+    become: yes
+    become_method: sudo
+    yum: name=git state=latest
+  - name: clone my github repository devops
+    git: 
+      clone: yes 
+      repo: https://github.com/gelizur/devops.git 
+      dest: /home/ec2-user/repository/devops
+  - name: clone my github repository petclinic
+    git: 
+      clone: yes 
+      repo: https://github.com/gelizur/spring-petclinic.git 
+      dest: /home/ec2-user/repository/petclinic

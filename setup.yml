@@ -9,6 +9,7 @@
       clone: yes 
       repo: https://github.com/gelizur/devops.git 
       dest: /home/ec2-user/repository/devops
+      update: no
   - name: clone my github repository petclinic
     git: 
       clone: yes 
@@ -18,3 +19,11 @@
     become: yes
     become_method: sudo
     yum: name=docker state=latest
+  - name: add docker group to ec2-user
+    become: yes
+    become_method: sudo
+    user: name=ec2-user groups=docker append=yes
+  - name: start docker service
+    become: yes
+    become_method: sudo
+    service: name=docker state=started 

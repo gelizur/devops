@@ -14,3 +14,7 @@
       clone: yes 
       repo: https://github.com/gelizur/spring-petclinic.git 
       dest: /home/ec2-user/repository/petclinic
+  - name: install docker
+    become: yes
+    become_method: sudo
+    yum: name=docker state=latest

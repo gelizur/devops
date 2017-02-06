@@ -27,3 +27,11 @@
     become: yes
     become_method: sudo
     service: name=docker state=started 
+  - name: install MAVEN http://apache.spd.co.il/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
+    become: yes
+    become_method: sudo
+    unarchive: 
+      src: http://apache.spd.co.il/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
+      dest: /home/ec2-user 
+      creates: /home/ec2-user/apache-maven-3.3.9
+      copy: no

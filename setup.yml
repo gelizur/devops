@@ -35,3 +35,15 @@
       dest: /home/ec2-user 
       creates: /home/ec2-user/apache-maven-3.3.9
       copy: no
+  - name: update path to run Maven
+    lineinfile:
+      destfile: /home/ec2-user/.bashrc
+      line: 'export M2_HOME=/home/ec2-user/apache-maven-3.3.9'
+  - name: update path to run Maven
+    lineinfile:
+      destfile: /home/ec2-user/.bashrc
+      line: 'export M2=$M2_HOME/bin'
+  - name: update path to run Maven
+    lineinfile:
+      destfile: /home/ec2-user/.bashrc
+      line: 'export PATH=$M2:$PATH'
